@@ -1,12 +1,11 @@
-const mongoose = require('mongoose')
+const mongoose = require("mongoose");
 
 //need to connect remote server and set up mongoose implementation
 //temporary database for testing
-mongoose.connect('mongodb://127.0.0.1:27017/books')
+mongoose.connect(process.env.DATABASE_URL);
 
-// shortcut to mongoose.connection object
-const db = mongoose.connection
+const db = mongoose.connection;
 
-db.on('connected', function() {
-    console.log(`Connected to MongoDB at ${db.host}:${db.port}`)
-})
+db.on("connected", function () {
+  console.log(`Connected to ${db.name} at ${db.host}:${db.port}`);
+});
