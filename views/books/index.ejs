@@ -2,25 +2,22 @@
 
 <br />
 <div id="list" class="row">
-  <div class="col-lg-2 col-sm-4 mb-4">
     <% books.forEach(function(book) { %>
+      <div class="col-lg-2 col-sm-4 mb-4">
       <div class="card h-100">
-        <a href="#"
+      <a href="#"
         ><img
           class="card-img-top"
           src="https://via.placeholder.com/700x400"
           alt=""
-        /></a>
-        <div class="card-body">
-          <h4 class="card-title"><%= book.title %></h4>
-        <p class="card-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
-          aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat
-          sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae?
-          Nihil, dolorem!
-        </p>
+      /></a>
+      <div class="card-body text-center">
+        <h4 class="card-title"><%= book.title %></h4>
+        <p class="card-text">by</p>
+        <h6><%= book.author.first %> <%= book.author.last %></h6>
       </div>
     </div>
+  </div>
     <% }); %>
   </div>
   <%- include('../partials/footer') %>

@@ -16,12 +16,12 @@ const commentSchema = new Schema({
     user: {
         type: Schema.Types.ObjectId, 
         ref: 'User', 
-        required: true
+        required: true,
         }, 
         userName: String,
-        userAvatar: String
+        userAvatar: String,
   }, {
-    timestamps: true
+    timestamps: true,
   })
 
 
@@ -47,9 +47,12 @@ const bookSchema = new Schema({
         type: String,
         required: true,
     },
+    author: {
+        first: String,
+        last: String,
+    },
     comments: [commentSchema],
     quotes: [quoteSchema],
-    author: [{type: Schema.Types.ObjectId, ref: 'Author'}]
     })
 
     module.exports = mongoose.model('book', bookSchema)
