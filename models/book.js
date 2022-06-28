@@ -1,15 +1,55 @@
-//EVENTS IN MONGOOSE MODELS
-    // We define the schema,
-    // Compile the schema into a model, and
-    // Export that model.
+const mongoose = require('mongoose')
+
+const Schema = mongoose.Schema
 
 
-    //model is exported
+const commentSchema = new Schema({
+    content: {
+        type: String,
+        required: true,
+    },
+    rating: {
+        type: Number,
+        min: 1,
+        max: 10,
+    },
+    user: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User', 
+        required: true
+        }, 
+        userName: String,
+        userAvatar: String
+  }, {
+    timestamps: true
+  })
 
-    
 
-    //schema's defined
+  const quoteSchema = new Schema({
+    content: {
+        type: String,
+        required: true,
+    },
+    user: {
+        type: Schema.Types.ObjectId, 
+        ref: 'User', 
+        required: true
+        }, 
+        userName: String,
+        userAvatar: String
+  }, {
+    timestamps: true
+  })
 
 
-    //schema is compiled into a model
+const bookSchema = new Schema({
+    Author: {
+        type: String,
+        required: true,
+    },
+    comments: [commentSchema],
+    quotes: [quoteSchema],
+    author: [{type: Schema.Types.ObjectId, ref: 'Author'}]
+    })
 
+    module.exports = mongoose.model('book', bookSchema)
