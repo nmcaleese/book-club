@@ -43,7 +43,7 @@ const commentSchema = new Schema({
 
 
 const bookSchema = new Schema({
-    Author: {
+    title: {
         type: String,
         required: true,
     },
