@@ -5,15 +5,16 @@
       <h4>User Comments</h4>
 
       <!-- ejs book.for each begins here -->
-      <div class="container">
+      <% book.comments.forEach(function(comment) { %>
+      <div class="container mt-2">
         <div class="row">
           <div class="col">
             <div class="card">
               <div class="card-body">
                 
                 <!-- add user data and comments here -->
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                <h5 class="card-title"><%= comment.userName %></h5>
+                <p class="card-text"><%= comment.content %></p>
                 <!--  -->
                 <div>
                   <button href="#" type="button" class="btn btn-primary btn-sm">Edit</button>
@@ -24,34 +25,29 @@
           </div>
         </div>
       </div>
+      <% }) %>
     </div>
 
 
         <!-- taken from <div class= card: h-75 w-50 mt-5 mx-auto -->
     <div class="col-4">
           <div class="card mt-5">
-    <a href="#"
-      ><img
-        class="card-img-top"
-        src="/public/images/fabric.jpeg"
-        alt=""
-    /></a>
+    
     <div class="card-body text-center">
       <h3 class="card-title "><%= book.title %></h3>
       <p class="card-text">by</p>
       <h4><%= book.author.first %> <%= book.author.last %></h4>
       <% if(user) { %>
-        <form class="row g-3" action="/books/<%= book._id %>/comment" method ="POST">
-         
+        <form class="row g-3" method ="POST" action="/books/<%= book._id %>/comments">
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <textarea class="form-control" name="content" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px">
+            </textarea>
             <label for="floatingTextarea2">My Take on it</label>
             <div>
               <label for="customRange2" class="form-label">Rating</label>
               <input type="range" class="form-range" min="0" max="10" id="customRange2" name="rating">
             </div>
           </div>
-        
           <div class="col-12">
             <button type="submit" class="btn btn-primary">Add My Take</button>
           </div>
@@ -60,7 +56,7 @@
         <form class="row g-3" action="/books" method ="POST">
 
           <div class="form-floating">
-            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <textarea class="form-control" name="content" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
             <label for="floatingTextarea2">My Favorite Quote</label>
           </div>
         

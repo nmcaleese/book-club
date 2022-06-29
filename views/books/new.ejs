@@ -1,37 +1,26 @@
 <%- include('../partials/header') %>
 
 <div class="card h-75 w-50 mt-5 mx-auto">
-    <a href="#"
-      ><img
-        class="card-img-top"
-        src="https://via.placeholder.com/700x400"
-        alt=""
-    /></a>
-    <div class="card-body">
-      <h3 class="card-title text-center">New Book</h3>
-
-
-        <form class="row g-3" action="/books" method ="POST">
-           
-            <div class="col-12">
-                <label for="bookTitle" class="form-label">Book Title</label>
-                <input type="text" class="form-control" id="bookTitle" name="title">
-            </div>
-            <h5 class="card-title text-center">Author</h5>
-            <div class="col-md-6">
-              <label for="authorFirst" class="form-label">First</label>
-              <input type="text" class="form-control" id="authorFirst" name="author.first">
-            </div>
-
-            <div class="col-md-6">
-              <label for="authorLast" class="form-label">Last</label>
-              <input type="text" class="form-control" id="authorLast" name="author.last">
-            </div>
-            <div class="col-12">
+  <div class="card-body">
+    <h3 class="card-title text-center">New Book</h3>
+      <form class="row g-3" action="/books" method ="POST">
+        <div class="col-12">
+          <label for="bookTitle" class="form-label">Book Title</label>
+          <input type="text" class="form-control" id="bookTitle" name="title">
+        </div>
+        <h3 class="card-title text-center">Author</h3>
+        <div class="col-md-6">
+          <label for="authorFirst" class="form-label">First</label>
+          <input type="text" class="form-control" id="authorFirst" name="author.first">
+        </div>
+          <div class="col-md-6">
+            <label for="authorLast" class="form-label">Last</label>
+            <input type="text" class="form-control" id="authorLast" name="author.last">
+          </div>
+          <div class="col-12">
               <button type="submit" class="btn btn-primary">Add Book</button>
-            </div>
-        </form>
+          </div>
+      </form>
     </div>
   </div>
-</div>
 <%- include('../partials/footer') %>
