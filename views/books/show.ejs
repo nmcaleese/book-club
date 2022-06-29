@@ -1,10 +1,14 @@
 <%- include('../partials/header') %>
-
-<div class="card h-75 w-50 mt-5 mx-auto">
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-4 text-center">Comments</div>
+        <!-- taken from <div class= card: h-75 w-50 mt-5 mx-auto -->
+    <div class="col-4">
+          <div class="card mt-5">
     <a href="#"
       ><img
         class="card-img-top"
-        src="https://via.placeholder.com/700x400"
+        src="/public/images/fabric.jpeg"
         alt=""
     /></a>
     <div class="card-body text-center">
@@ -12,34 +16,40 @@
       <p class="card-text">by</p>
       <h4><%= book.author.first %> <%= book.author.last %></h4>
       <% if(user) { %>
-      <form class="row g-3" action="/books/<%= book._id %>/comment" method ="POST">
+        <form class="row g-3" action="/books/<%= book._id %>/comment" method ="POST">
          
-        <div class="form-floating">
-          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-          <label for="floatingTextarea2">My Take on it</label>
-          <div><label for="customRange2" class="form-label">Rating</label>
-          <input type="range" class="form-range" min="0" max="10" id="customRange2" name="rating">
-        </div>
-        </div>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">My Take on it</label>
+            <div>
+              <label for="customRange2" class="form-label">Rating</label>
+              <input type="range" class="form-range" min="0" max="10" id="customRange2" name="rating">
+            </div>
+          </div>
         
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Add Review</button>
-        </div>
-      </form>
-      <br />
-      <form class="row g-3" action="/books" method ="POST">
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Add My Take</button>
+          </div>
+        </form>
+        <br />
+        <form class="row g-3" action="/books" method ="POST">
 
-        <div class="form-floating">
-          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-          <label for="floatingTextarea2">My Favorite Quote</label>
-        </div>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+            <label for="floatingTextarea2">My Favorite Quote</label>
+          </div>
         
-        <div class="col-12">
-          <button type="submit" class="btn btn-primary">Add Quote</button>
-        </div>
-      </form>
+          <div class="col-12">
+            <button type="submit" class="btn btn-primary">Add Quote</button>
+          </div>
+        </form>
       <% } %>
     </div>
+      </div>
+    </div>
+    <div class="col-4 text-center">Quotes</div>
+
+    
   </div>
 </div>
 <%- include('../partials/footer') %>
