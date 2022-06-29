@@ -11,7 +11,8 @@
       <h3 class="card-title "><%= book.title %></h3>
       <p class="card-text">by</p>
       <h4><%= book.author.first %> <%= book.author.last %></h4>
-      <form class="row g-3" action="/books" method ="POST">
+      <% if(user) { %>
+      <form class="row g-3" action="/books/<%= book._id %>/comment" method ="POST">
          
         <div class="form-floating">
           <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
@@ -34,6 +35,7 @@
           <button type="submit" class="btn btn-primary">Add Quote</button>
         </div>
       </form>
+      <% } %>
     </div>
   </div>
 </div>
