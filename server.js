@@ -7,6 +7,7 @@ var session = require('express-session');
 var passport = require('passport');
 
 
+
 //require dotenv before any other module that depends on it
 require('dotenv').config();
 
@@ -14,6 +15,8 @@ require('dotenv').config();
 require('./config/database')
 //connect with passport 
 require('./config/passport');
+// Add this middleware BELOW passport middleware
+
 
 
 //REQUIRED VARIABLES IMPORTED FROM ROUTES
