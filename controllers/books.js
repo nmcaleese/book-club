@@ -4,6 +4,7 @@ module.exports = {
   index,
   new: newBook,
   create,
+  show,
 };
 
 function index(req, res) {
@@ -30,3 +31,9 @@ function create(req, res) {
   });
 
 }
+
+
+function show(req, res) {
+  Book.findById(req.params.id, function(err, book){
+    res.render('books/show', {title: "Details", book})
+})}
