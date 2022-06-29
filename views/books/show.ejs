@@ -7,16 +7,33 @@
         src="https://via.placeholder.com/700x400"
         alt=""
     /></a>
-    <div class="card-body">
-      <h4 class="card-title">
-        <a href="#">Project One</a>
-      </h4>
-      <p class="card-text">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam
-        aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat
-        sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae?
-        Nihil, dolorem!
-      </p>
+    <div class="card-body text-center">
+      <h3 class="card-title "><%= book.title %></h3>
+      <p class="card-text">by</p>
+      <h4><%= book.author.first %> <%= book.author.last %></h4>
+      <form class="row g-3" action="/books" method ="POST">
+         
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+          <label for="floatingTextarea2">My Take on it</label>
+        </div>
+        
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Add Review</button>
+        </div>
+      </form>
+      <br />
+      <form class="row g-3" action="/books" method ="POST">
+
+        <div class="form-floating">
+          <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+          <label for="floatingTextarea2">My Favorite Quote</label>
+        </div>
+        
+        <div class="col-12">
+          <button type="submit" class="btn btn-primary">Add Quote</button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
