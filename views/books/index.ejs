@@ -5,25 +5,18 @@
     <% books.forEach(function(book) { %>
       
       <div class="col-lg-2 col-sm-4 mb-4">
-      <div class="card h-100">
-        <img
-          class="card-img-top"
-          src="/public/images/fabric.jpeg"
-          alt=""
-        />
-      <div class="card-body text-center">
-        
-          <h4 class="card-title mask"><%= book.title %></h4>
-        
-        <p class="card-text">by</p>
-        <h6><%= book.author.first %> <%= book.author.last %></h6>
-        <div class="d-grid gap-2 col-6 mx-auto">
-          <a href="/books/<%=book._id %>" style="color: black; text-decoration: none">
-          <button type="button" class="btn btn-primary btn-sm">view details</button></a>
+        <div class="card h-100">
+          <div class="card-body text-center">
+            <h4 class="card-title mask"><%= book.title %></h4>
+            <p class="card-text">by</p>
+            <h6><%= book.author.first %> <%= book.author.last %></h6>
+            <div class="d-grid gap-2 col-6 mx-auto">
+                <a href="/books/<%=book._id %>" class="btn btn-primary btn-sm">View Details</a>
+              </a>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
 
     <% }); %>
   </div>
