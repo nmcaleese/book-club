@@ -27,9 +27,6 @@
                     
 
 
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
-                      Launch demo modal
-                    </button>
 
 
 
@@ -53,7 +50,7 @@
 
 <!-- might need a full comment id find function because this modal isn't part of the iteration as far as I can tell -->
 
-<form action="/comments/<%= comment._id %>?_method=PUT"
+<form action="/comments/<%= comment.id %>?_method=PUT"
   method="POST">
 
 <!-- need to replace with input -->
@@ -99,7 +96,8 @@
 3. action and method added to edit form (seems to work(should be connected to the right route))  
 4. full modal code added to comment card for iteration to work
 5. method= PUT added to form (method override deleted)
-6. took "book" out of book.comment._id-->
+6. took "book" out of book.comment._id
+7. attach unique modal id to modals with ejs taks and the comment id-->
 
 
     </div>
@@ -121,14 +119,9 @@
 
 
 <!-- DELETE THIS BUTTON WHEN MODAL WORKS -->
-                    <form
-                      action="/comments/<%= comment._id %>?_method=PUT"
-                      method="POST"
-                    >
-                      <button type="submit" class="btn btn-primary btn-sm">
-                        Edit
-                      </button>
-                    </form>
+                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
+                      Edit
+                    </button>
 
 <!-- DELETE THIS BUTTON WHEN MODAL WORKS -->
 <!-- end of current EDIT form/button -->
@@ -242,16 +235,14 @@
                 
 
 
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
-                  Launch demo modal
-                </button>
+
 
 
 
 
 
 <!-- MODAL -->
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade" id="quoteModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
 <div class="modal-content">
   
@@ -325,14 +316,9 @@ method="POST">
 
 
 <!-- DELETE THIS BUTTON WHEN MODAL WORKS -->
-                <form
-                  action="/quotes/<%= quote._id %>?_method=PUT"
-                  method="POST"
-                >
-                  <button type="submit" class="btn btn-primary btn-sm">
+                  <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#quoteModal">
                     Edit
                   </button>
-                </form>
 
 <!-- DELETE THIS BUTTON WHEN MODAL WORKS -->
 <!-- end of current EDIT form/button -->
