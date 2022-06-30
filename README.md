@@ -3,14 +3,14 @@
 Minimalistic design for creating a digital library of books! Add books, read other user's reviews and ratings of your favorite books, and post your favorite quotes!
 
 
-![alt text](./public/images/wireframes.png "screenshot1")
-![alt text](./public/images/erd.png "screenshot1")
-![alt text](./public/images/trello.png "screenshot1")
+![alt text](./public/images/wireframes.png "Wireframes")
+![alt text](./public/images/erd.png "ERD")
+![alt text](./public/images/trello.png "Trello")
 # Screenshots
 ![alt text](./public/images/allTheBooks.png "screenshot1")
-![alt text](./public/images/newBook.png "screenshot1")
-![alt text](./public/images/bookDetails.png"screenshot1")
-![alt text](./public/images/editModal.png "screenshot1")
+![alt text](./public/images/newBook.png "screenshot2")
+![alt text](./public/images/bookDetails.png "screenshot3")
+![alt text](./public/images/editModal.png "screenshot4")
 
 # Technologies Used:
 
