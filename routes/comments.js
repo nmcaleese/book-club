@@ -1,12 +1,12 @@
 const express = require('express');
 const router = express.Router();
-
+const isLoggedIn = require('../config/auth')
  
 const commentsCtrl = require('../controllers/comments')
 
-router.post('/books/:id/comments', commentsCtrl.create)
-router.delete('/comments/:id', commentsCtrl.delete)
-router.put('/comments/:id', commentsCtrl.edit)
+router.post('/books/:id/comments', isLoggedIn, commentsCtrl.create)
+router.delete('/comments/:id', isLoggedIn, commentsCtrl.delete)
+router.put('/comments/:id', isLoggedIn, commentsCtrl.edit)
 
 
 
