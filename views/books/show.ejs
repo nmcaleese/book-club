@@ -1,26 +1,125 @@
 <%- include('../partials/header') %>
+
+
+
 <div class="container-fluid">
   <div class="row">
     <div class="col-4 text-center mt-5">
       <h4>User Comments</h4>
-
-      <!-- ejs book.for each begins here -->
+<!-- ejs book.for each begins here -->
       <% book.comments.forEach(function(comment) { %>
       <div class="container mt-2">
         <div class="row">
           <div class="col">
             <div class="card">
               <div class="card-body">
-                <!-- add user data and comments here -->
+<!-- add user data and comments here -->
                 <h5 class="card-title"><%= comment.userName %></h5>
                 <p class="card-text"><%= comment.content %></p>
                 <h5 class="card-title"><%= comment.rating %>/10</h5>
-                <!--  -->
-
 <!-- add only logged in users here -->
-<% if (user && user._id.equals(comment.user) ) { %>
+                <% if (user && user._id.equals(comment.user) ) { %>
                 <div class="row">
                   <div class="col md-6">
+                    
+                
+                    
+
+
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+                      Launch demo modal
+                    </button>
+
+
+
+
+
+                    <!-- MODAL -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      
+      
+      <div class="modal-header">
+        <h5 class="modal-title" id="editModalLabel">Edit Your Take</h5>
+<!-- might mean this button functionality is attached to the close button through aria-label -->
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- might mean this button functionality is attached to the close button through aria-label -->
+      </div>
+
+
+      <!-- ITERATOR TO BRING IN CONTENT FOR COMMENT-->
+
+<!-- might need a full comment id find function because this modal isn't part of the iteration as far as I can tell -->
+
+<form action="/comments/<%= comment._id %>?_method=PUT"
+  method="POST">
+
+<!-- need to replace with input -->
+      <div class="modal-body">      
+            <div class="form-floating">
+              <textarea
+                class="form-control"
+                name="content"
+                placeholder="Leave a comment here"
+                id="floatingTextarea2"
+                style="height: 100px"
+              ><%- comment.content%>
+              </textarea>
+              <label for="floatingTextarea2">My Take On It</label>
+              <div>
+                <label for="customRange2" class="form-label">Rating</label>
+                <input
+                  type="range"
+                  class="form-range"
+                  min="0"
+                  max="10"
+                  id="customRange2"
+                  name="rating"
+                />
+              </div>
+            </div>
+      </div>
+
+
+<!-- body needs to be replaced with input -->
+      
+<!-- submission and close -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Save changes</button>
+      </div>
+
+</form>
+
+<!-- Steps taken:
+1. 'save changes' button type changed to submit (looks ok)
+2. div class form floating (looks ok)
+3. action and method added to edit form (seems to work(should be connected to the right route))  
+4. full modal code added to comment card for iteration to work
+5. method= PUT added to form (method override deleted)
+6. took "book" out of book.comment._id-->
+
+
+    </div>
+  </div>
+</div>
+<!-- end of MODAL -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- current EDIT form/button -->
+
+
+<!-- DELETE THIS BUTTON WHEN MODAL WORKS -->
                     <form
                       action="/comments/<%= comment._id %>?_method=PUT"
                       method="POST"
@@ -29,6 +128,14 @@
                         Edit
                       </button>
                     </form>
+
+<!-- DELETE THIS BUTTON WHEN MODAL WORKS -->
+<!-- end of current EDIT form/button -->
+
+
+
+
+
                   </div>
                   <div class="col md-6">
                     <form
@@ -43,8 +150,7 @@
 
                   </div>
                 </div>
-<% } %>
-                <!-- end only logged in user data here -->
+                <% } %>
               </div>
             </div>
           </div>
@@ -53,7 +159,7 @@
       <% }) %>
     </div>
 
-    <!-- taken from <div class= card: h-75 w-50 mt-5 mx-auto -->
+    <!-- Center Card -->
     <div class="col-4">
       <div class="card mt-5">
         <div class="card-body text-center">
@@ -93,7 +199,8 @@
             </div>
           </form>
           <br />
-          <form class="row g-3" action="/books" method="POST">
+<!-- beginning of QUOTE card -->
+          <form class="row g-3" action="/books/<%= book._id %>/quotes" method="POST">
             <div class="form-floating">
               <textarea
                 class="form-control"
@@ -116,33 +223,145 @@
     <div class="col-4 text-center mt-5">
       <h4>Favorite Quotes</h4>
 
-      <!-- ejs book.for each begins here -->
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <div class="card">
-              <div class="card-body">
-                <!-- add user data and comments here -->
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">
-                  With supporting text below as a natural lead-in to additional
-                  content.
-                </p>
-                <!--  -->
-                <div>
-                  <button href="#" type="button" class="btn btn-primary btn-sm">
+
+<!-- quotes column -->
+<!-- ejs book.for each begins here -->
+<% book.quotes.forEach(function(quote) { %>
+  <div class="container mt-2">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-body">
+<!-- add user data and comments here -->
+            <h5 class="card-title"><%= quote.userName %></h5>
+            <p class="card-text"><%= quote.content %></p>
+<!-- add only logged in users here -->
+            <% if (user && user._id.equals(quote.user) ) { %>
+            <div class="row">
+              <div class="col md-6">
+                
+            
+                
+
+
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">
+                  Launch demo modal
+                </button>
+
+
+
+
+
+<!-- MODAL -->
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+<div class="modal-content">
+  
+  
+  <div class="modal-header">
+    <h5 class="modal-title" id="editModalLabel">Edit Your Quote</h5>
+<!-- might mean this button functionality is attached to the close button through aria-label -->
+    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+<!-- might mean this button functionality is attached to the close button through aria-label -->
+  </div>
+
+
+  <!-- ITERATOR TO BRING IN CONTENT FOR QUOTE-->
+
+<!-- might need a full quote id find function because this modal isn't part of the iteration as far as I can tell -->
+
+<form action="/quotes/<%= quote._id %>?_method=PUT"
+method="POST">
+
+<!-- need to replace with input -->
+  <div class="modal-body">      
+        <div class="form-floating">
+          <textarea
+            class="form-control"
+            name="content"
+            placeholder="Leave a comment here"
+            id="floatingTextarea2"
+            style="height: 100px"
+          ><%- quote.content%>
+          </textarea>
+          <label for="floatingTextarea2">My Favorite Quote</label>
+        </div>
+  </div>
+
+
+<!-- body needs to be replaced with input -->
+  
+<!-- submission and close -->
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+    <button type="submit" class="btn btn-primary">Save changes</button>
+  </div>
+
+</form>
+
+<!-- Steps taken:
+1. 'save changes' button type changed to submit (looks ok)
+2. div class form floating (looks ok)
+3. action and method added to edit form (seems to work(should be connected to the right route))  
+4. full modal code added to comment card for iteration to work
+5. method= PUT added to form (method override deleted)
+6. took "book" out of book.comment._id-->
+
+
+</div>
+</div>
+</div>
+<!-- end of MODAL -->
+
+
+
+
+
+
+
+
+
+
+
+<!-- current EDIT form/button -->
+
+
+<!-- DELETE THIS BUTTON WHEN MODAL WORKS -->
+                <form
+                  action="/quotes/<%= quote._id %>?_method=PUT"
+                  method="POST"
+                >
+                  <button type="submit" class="btn btn-primary btn-sm">
                     Edit
                   </button>
-                  <button href="#" type="button" class="btn btn-primary btn-sm">
+                </form>
+
+<!-- DELETE THIS BUTTON WHEN MODAL WORKS -->
+<!-- end of current EDIT form/button -->
+
+
+
+
+
+              </div>
+              <div class="col md-6">
+                <form
+                  action="/quotes/<%= quote._id %>?_method=DELETE"
+                  method="POST"
+                >
+                  <button type="submit" class="btn btn-primary btn-sm">
                     Delete
                   </button>
-                </div>
+                </form>
+
+
               </div>
             </div>
+            <% } %>
           </div>
         </div>
       </div>
     </div>
   </div>
+  <% }) %>
 </div>
-<%- include('../partials/footer') %>

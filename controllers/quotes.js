@@ -2,10 +2,9 @@ const Book = require('../models/book')
 
 module.exports = {
     create,
-    delete: deleteCom,
+    delete: deleteQuote,
     edit,
 }
-
 
 function create(req, res) {
     console.log(req.body)
@@ -13,20 +12,20 @@ function create(req, res) {
         req.body.user = req.user._id;
         req.body.userName = req.user.name;
         req.body.userAvatar = req.user.avatar;
-        book.comments.push(req.body);
+        book.quotes.push(req.body);
         book.save(function(err){
             res.redirect(`/books/${book._id}`)
         })
     })
 }
 
-async function deleteCom(req,res, next){
+async function deleteQuote(req,res, next){
     console.log(`START HERE`)
     console.log(`req.params`)
 try {
-    const book = await Book.findOne({ 'comments._id': req.params.id, 'comments.user': req.user._id })
+    const book = await Book.findOne({ 'quotes._id': req.params.id, 'quotes.user': req.user._id })
     if(!book) return res.redirect('/books')
-    book.comments.remove(req.params.id)
+    book.quotes.remove(req.params.id)
     await book.save()
     res.redirect(`/books/${book._id}`)
 } catch(err) {
