@@ -34,6 +34,5 @@ function create(req, res) {
 
 function show(req, res) {
   Book.findById(req.params.id, function(err, book){
-    console.log(book.comments)
     res.render('books/show', {title: "Details", book})
 })}
