@@ -4,32 +4,33 @@
 
 <div class="container-fluid">
   <div class="row">
+
 <!-- beginning of comments column -->
+
     <div class="col-4 text-center mt-5">
       <h4>User Comments</h4>
+      
 <!-- ejs book.for each begins here -->
+
       <% book.comments.forEach(function(comment) { %>
       <div class="container mt-2">
         <div class="row">
           <div class="col">
             <div class="card">
               <div class="card-body">
+
 <!-- add user data and comments here -->
+
                 <h5 class="card-title"><%= comment.userName %></h5>
                 <p class="card-text"><%= comment.content %></p>
                 <h5 class="card-title"><%= comment.rating %>/10</h5>
+
 <!-- add only logged in users here -->
+
                 <% if (user && user._id.equals(comment.user) ) { %>
                 <div class="row">
                   <div class="col md-6">
                     
-                
-                    
-
-
-
-
-
 
 
                     <!-- MODAL -->
@@ -37,18 +38,13 @@
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
     <div class="modal-content">
       
-      
       <div class="modal-header">
         <h5 class="modal-title" id="editModalLabel">Edit Your Take</h5>
-<!-- might mean this button functionality is attached to the close button through aria-label -->
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-<!-- might mean this button functionality is attached to the close button through aria-label -->
+
       </div>
 
-
-      <!-- ITERATOR TO BRING IN CONTENT FOR COMMENT-->
-
-<!-- might need a full comment id find function because this modal isn't part of the iteration as far as I can tell -->
+<!-- COMMENT FORM -->
 
 <form action="/comments/<%= comment.id %>?_method=PUT"
   method="POST">
@@ -78,9 +74,6 @@
               </div>
             </div>
       </div>
-
-
-<!-- body needs to be replaced with input -->
       
 <!-- submission and close -->
       <div class="modal-footer">
@@ -89,46 +82,16 @@
       </div>
 
 </form>
-
-<!-- Steps taken:
-1. 'save changes' button type changed to submit (looks ok)
-2. div class form floating (looks ok)
-3. action and method added to edit form (seems to work(should be connected to the right route))  
-4. full modal code added to comment card for iteration to work
-5. method= PUT added to form (method override deleted)
-6. took "book" out of book.comment._id
-7. attach unique modal id to modals with ejs taks and the comment id-->
-
-
     </div>
   </div>
 </div>
 <!-- end of MODAL -->
 
 
-
-
-
-
-
-
-
-
-
-<!-- current EDIT form/button -->
-
-
 <!-- DELETE THIS BUTTON WHEN MODAL WORKS -->
                     <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editModal">
                       Edit
                     </button>
-
-<!-- DELETE THIS BUTTON WHEN MODAL WORKS -->
-<!-- end of current EDIT form/button -->
-
-
-
-
 
                   </div>
                   <div class="col md-6">
