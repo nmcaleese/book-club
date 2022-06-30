@@ -1,24 +1,20 @@
 <%- include('../partials/header') %>
-
-<br />
-<div id="list" class="row">
-    <% books.forEach(function(book) { %>
-      
-      <div class="col-lg-2 col-sm-4 mb-4">
-        <div class="card h-100">
-          <div class="card-body text-center">
-            <h4 class="card-title mask"><%= book.title %></h4>
-            <p class="card-text">by</p>
-            <h6><%= book.author.first %> <%= book.author.last %></h6>
-            <div class="d-grid gap-2 col-6 mx-auto">
-                <a href="/books/<%=book._id %>" class="btn btn-primary btn-sm">View Details</a>
-              </a>
+  <div id="list" class="row mx-5 mt-3">
+      <% books.forEach(function(book) { %>
+        <div class="col-lg-2 col-sm-4 mb-4">
+          <div class="card h-100">
+            <div class="card-body text-center">
+              <h4 class="card-title mask"><%= book.title %></h4>
+              <p class="card-text">by</p>
+              <h6><%= book.author.first %> <%= book.author.last %></h6>
+              <div class="d-grid gap-2 col-6 mx-auto">
+                  <a href="/books/<%=book._id %>" class="btn btn-primary btn-sm">View Details</a>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% }); %>
+    </div>
+  </div>  
+<%- include('../partials/footer') %>
 
-    <% }); %>
-  </div>
-  <%- include('../partials/footer') %>
-</div>

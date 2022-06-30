@@ -4,6 +4,7 @@
 
 <div class="container-fluid">
   <div class="row">
+<!-- beginning of comments column -->
     <div class="col-4 text-center mt-5">
       <h4>User Comments</h4>
 <!-- ejs book.for each begins here -->
@@ -172,16 +173,15 @@
             method="POST"
             action="/books/<%= book._id %>/comments"
           >
-            <div class="form-floating">
+            <div class="form-floating mt-5">
               <textarea
                 class="form-control"
                 name="content"
                 placeholder="Leave a comment here"
                 id="floatingTextarea2"
                 style="height: 100px"
-              >
-              </textarea>
-              <label for="floatingTextarea2">My Take On It</label>
+              ></textarea>
+              <label for="floatingTextarea2">My Take on It</label>
               <div>
                 <label for="customRange2" class="form-label">Rating</label>
                 <input
@@ -198,9 +198,8 @@
               <button type="submit" class="btn btn-primary">Add My Take</button>
             </div>
           </form>
-          <br />
 <!-- beginning of QUOTE card -->
-          <form class="row g-3" action="/books/<%= book._id %>/quotes" method="POST">
+          <form class="row g-3 mt-2" action="/books/<%= book._id %>/quotes" method="POST">
             <div class="form-floating">
               <textarea
                 class="form-control"
@@ -211,7 +210,6 @@
               ></textarea>
               <label for="floatingTextarea2">My Favorite Quote</label>
             </div>
-
             <div class="col-12">
               <button type="submit" class="btn btn-primary">Add Quote</button>
             </div>
@@ -365,3 +363,4 @@ method="POST">
   </div>
   <% }) %>
 </div>
+<%- include('../partials/footer') %>

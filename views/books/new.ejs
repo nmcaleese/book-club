@@ -1,14 +1,13 @@
 <%- include('../partials/header') %>
-
-<div class="card h-75 w-50 mt-5 mx-auto">
-  <div class="card-body">
-    <h3 class="card-title text-center">New Book</h3>
+<div class="card h-50 w-50 mt-5 mx-auto">
+  <div class="card-body text-center">
+    <h3 class="card-title text-center mt-3">New Book</h3>
       <form class="row g-3" action="/books" method ="POST">
         <div class="col-12">
           <label for="bookTitle" class="form-label">Book Title</label>
           <input type="text" class="form-control" id="bookTitle" name="title">
         </div>
-        <h3 class="card-title text-center">Author</h3>
+        <h3 class="card-title text-center mt-5">Author</h3>
         <div class="col-md-6">
           <label for="authorFirst" class="form-label">First</label>
           <input type="text" class="form-control" id="authorFirst" name="author.first">
