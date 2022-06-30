@@ -9,5 +9,4 @@ router.delete('/comments/:id', isLoggedIn, commentsCtrl.delete)
 router.put('/comments/:id', isLoggedIn, commentsCtrl.edit)
 
 
-
 module.exports = router;

@@ -18,15 +18,13 @@ function newBook(req, res) {
   res.render("books/new", { title: "Add Book" });
 }
 
-//add { title: 'User Library', books} below when title and books are needed for rendering
+
 function create(req, res) {
   console.log(req.body);
   let book = new Book(req.body);
   book.save(function(err) {
-    // one way to handle errors
     if (err) return res.redirect('/books/new');
     console.log(book);
-    // for now, redirect right back to new.ejs
     res.redirect(`books`);
   });
 
