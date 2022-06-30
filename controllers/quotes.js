@@ -35,7 +35,14 @@ try {
 }
 
 function edit(req, res) {
-    console.log(`START HERE`)
-    console.log(`edit button made it`)
-    res.redirect(`books`)
-}
+    Book.findOne({ "quotes._id": req.params.id }, function (err, book) {
+      const quoteSubdoc = book.quotes.id(req.params.id);
+      if (!quoteSubdoc.user.equals(req.user._id))
+        return res.redirect(`/books/${book._id}`);
+      quoteSubdoc.content = req.body.content;
+      quoteSubdoc.rating = req.body.rating;
+      book.save(function (err) {
+        res.redirect(`/books/${book._id}`);
+      });
+    });
+  }
