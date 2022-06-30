@@ -15,7 +15,7 @@ function create(req, res) {
         book.save(function(err){
             res.redirect(`/books/${book._id}`)
         })
-        console.log(book)
+        console.log(req.user._id)
     })
 }
 

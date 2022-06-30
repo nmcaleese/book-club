@@ -17,6 +17,8 @@
                 <h5 class="card-title"><%= comment.rating %>/10</h5>
                 <!--  -->
 
+<!-- add only logged in users here -->
+<% if (user && user._id.equals(comment.user) ) { %>
                 <div class="row">
                   <div class="col md-6">
                     <form
@@ -37,8 +39,12 @@
                         Delete
                       </button>
                     </form>
+
+
                   </div>
                 </div>
+<% } %>
+                <!-- end only logged in user data here -->
               </div>
             </div>
           </div>
@@ -69,7 +75,7 @@
                 style="height: 100px"
               >
               </textarea>
-              <label for="floatingTextarea2">My Take on it</label>
+              <label for="floatingTextarea2">My Take On It</label>
               <div>
                 <label for="customRange2" class="form-label">Rating</label>
                 <input
